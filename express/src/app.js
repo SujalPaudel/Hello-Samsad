@@ -6,8 +6,9 @@ const words = require("./data/words.json");
 // app.use(express.static(path.resolve(__dirname)))
 
 app.get("/search", (req,res)=>{
+    console.log(req.query)
     const results = words.filter((word)=>
-    new RegExp(`^${req.query.q}`).test(word)
+    new RegExp(`${req.query.q}`,'gi').test(word)
     );
     res.json(results);
 })
