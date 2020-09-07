@@ -36,10 +36,7 @@ function Home() {
             ))}
             <hr />
             <input type="text" placeholder="Search.." onChange={handleChange}></input>
-            {lists.map((each)=><li>{each}</li>)}
-
-
-            {/* <DisplayItems items={Object.values(itemsData)} /> */}
+            {lists.map((each)=><li>{each.name}{each.age}</li>)}
         </div>
 
     )
