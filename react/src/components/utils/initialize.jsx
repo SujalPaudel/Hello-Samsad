@@ -10,7 +10,7 @@ function useInitialize() {
     useEffect(() => {
         dispatch(loadUser())
         dispatch(fetchDomainData());
-        // dispatch(fetchItemsData({ type: "POPULATE_ITEMS", filter: [] }));
+        dispatch(fetchItemsData({ type: "POPULATE_ITEMS", filter: [] }));
     }, [])
 }
 
