@@ -5,7 +5,8 @@ import Register from "./views/auth/Register";
 import LogIn from "./views/auth/LogIn";
 import NewBatch from "./views/OneItem/newBatch";
 import CartItem from "./views/Cart";
-import CheckOut from "./views/CheckOut";
+import searchFilter from "./views/searchFilter";
+import mapSearch from "./views/mapSearch";
 
 const routes = [
     {
@@ -50,10 +51,16 @@ const routes = [
         component: CartItem,
     },
     {
-        path: "/checkout",
+        path: "/search-filters",
         exact: true,
-        name: "Checkout",
-        component: CheckOut,
+        name: "searchFilters",
+        component: searchFilter,
+    },
+    {
+        path: "/map-search",
+        exact: true,
+        name: "mapSearch",
+        component: mapSearch,
     },
 
 ];

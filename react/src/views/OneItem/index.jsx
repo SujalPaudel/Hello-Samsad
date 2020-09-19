@@ -24,9 +24,9 @@ function OneItem() {
         <div>
             <p>Name:{one.name}</p>
 
-            <p>Age:{one.age}</p>
-
             <p>Gender:{one.gender}</p>
+
+            <p>Age:{one.age}</p>
 
         </div>
     );

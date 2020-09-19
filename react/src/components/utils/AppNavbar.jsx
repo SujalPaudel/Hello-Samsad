@@ -20,7 +20,7 @@ function AppNavbar() {
         [{ id: 3, name: "Logout", route: "logout" }]
 
     const foreverLinks =
-        [{ id: 4, name: "Cart", route: "cart" }]
+        [{ id: 4, name: "Cart", route: "cart" },{ id: 5, name: "Home", route: "" }]
 
     const handleClick = {
         domain: (each) => {
@@ -31,39 +31,40 @@ function AppNavbar() {
     const { token, isAuthenticated, user } = useSelector((state) => state.authReducer)
 
     return (
-        <div>
-            {isAuthenticated || token ?
+        // <div>
+        //     {isAuthenticated || token ?
 
-                authLinks.map((each) => (
-                    <div>
-                        <button style={{ float: "right" }}>{user?.firstname}</button>
-                        <button key={each.id} onClick={() => dispatch(logout()) && history.push(`/`)}>
-                            {each.name}
-                        </button>
+        //         authLinks.map((each) => (
+        //             <div>
+        //                 <button style={{ float: "right" }}>{user?.firstname}</button>
+        //                 <button key={each.id} onClick={() => dispatch(logout()) && history.push(`/`)}>
+        //                     {each.name}
+        //                 </button>
 
-                    </div>
-                ))
-                :
-                guestLinks.map((each) => (
-                    <button key={each.id} onClick={() => handleClick.domain(each)}>
-                        {each.name}
-                    </button>
-                ))
+        //             </div>
+        //         ))
+        //         :
+        //         guestLinks.map((each) => (
+        //             <button key={each.id} onClick={() => handleClick.domain(each)}>
+        //                 {each.name}
+        //             </button>
+        //         ))
 
-            }
+        //     }
 
-            {foreverLinks.map((each) => (
-                <div>
+        //     {foreverLinks.map((each) => (
+        //         <div>
 
-                    <button key={each.id} onClick={() => handleClick.domain(each)}>
-                        {each.name}
-                    </button>
+        //             <button key={each.id} onClick={() => handleClick.domain(each)}>
+        //                 {each.name}
+        //             </button>
 
-                </div>))
-            }
+        //         </div>))
+        //     }
 
-            <hr />
-        </div>
+        //     <hr />
+        // </div>
+        <></>
 
     )
 }

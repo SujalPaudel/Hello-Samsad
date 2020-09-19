@@ -20,6 +20,22 @@ router.post("/people", async (req, res) => {
     res.send(people)
 })
 
+
+router.get("/people/custom", async (req,res)=>{
+  try{
+    if(req.query.name){
+      const userRegex = new RegExp(req.query.name, 'gi')
+      req.query.name=userRegex
+    }
+
+    const people = await People.find(req.query)
+    res.status(200).json(people)
+  }
+  catch{
+    res.status(404).send("Politician doesn't exist !")
+  }
+})
+
 router.get("/people/:id", async (req,res)=>{
   try{
     const people = await People.findOne({_id:req.params.id})
@@ -30,5 +46,7 @@ router.get("/people/:id", async (req,res)=>{
     res.send("Politician doesn't exist !")
   }
 })
+
+
 
 module.exports = router
