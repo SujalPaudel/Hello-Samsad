@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import OneItem from '../../views/OneItem'
 import axios from 'axios'
+import scroll from './scroll_test';
 import '../../../src/index.css'
 
 
@@ -12,6 +12,11 @@ function Home() {
     const history = useHistory();
     const { domainData, itemsData } = useSelector((state) => state);
     const [lists, setlist] = useState([]);
+    const [lastScrollTop, setLastScrollTop] = useState(0);
+    const [bodyOffset, setBodyOffset] = useState(
+        document.body.getBoundingClientRect()
+      );
+    const [toolBarClass, setToolBarClass] = useState('')
 
     const handleClick = {
         domain: (each) => {
@@ -33,11 +38,23 @@ function Home() {
         history.push(`/item/${each._id}`);
     }
 
+    useEffect(()=> {
+        window.addEventListener('scroll', ()=>{
+            let isTop = window.scrollY < 40
+            if(!isTop){
+                setToolBarClass('opaque')
+            }else{
+                setToolBarClass('')
+            }
+        })
+    })
+    
+
     return (
-        <div className="main-content">
+        <div className={`main-container ${toolBarClass}`}>
             <div className = "toolbar header">
                     <div className="logo-container">
-                    
+
                     </div>
                     <nav>
                         {domainData.map((each) => (
@@ -47,6 +64,7 @@ function Home() {
                         ))}
                     </nav>
             </div>
+            <div className="main-content">
             <div className="hero">
                 <div className = "full-container">
                     <div className = "hero-title">
@@ -192,6 +210,9 @@ function Home() {
                             <div class="text-container">
                                 <h4><b>John Doe</b></h4>
                                 <p>Architect and Engineer</p>
+                                <div className="party-container">
+                                    <span>REPUBLICAN</span>
+                                </div>
                             </div>
                         </div>
                         <div className="slider-item-container">
@@ -216,6 +237,70 @@ function Home() {
                         
                     </div>
                 </div>
+                <div className="swoosh-img-flip">
+                    <img aria-hidden="true" src={"/swoosh.svg"} />
+                </div>
+            </div>
+            <div className="spacer">
+            </div>
+
+            {/* Blog Section */}
+
+            <div className="full-container">
+                <div className="blog-section">
+                    <div className="blog-header">
+                        <h2 className="headline">
+                            Voterly Blog
+                        </h2>
+                    </div>
+                    
+                    <div className="blog-row row">
+                        <div className="blog-post-card-container">
+                            <a href="https://medium.com" className="blog-post-card">
+                                <img src="https://cdn-images-1.medium.com/max/350/0*GZtLnMihPDVAzwCr" className="medium-img"/>
+                                <div className="blog-card-content">
+                                    <span className="post-title">
+                                        Nine Lesser-Known Elected Offices That Influence Social Systems
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div className="blog-post-card-container">
+                            <a href="https://medium.com" className="blog-post-card">
+                                <img src="https://cdn-images-1.medium.com/max/350/0*GZtLnMihPDVAzwCr" className="medium-img"/>
+                                <div className="blog-card-content">
+                                    <span className="post-title">
+                                        Nine Lesser-Known Elected Offices That Influence Social Systems
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div className="blog-post-card-container">
+                            <a href="https://medium.com" className="blog-post-card">
+                                <img src="https://cdn-images-1.medium.com/max/350/0*GZtLnMihPDVAzwCr" className="medium-img"/>
+                                <div className="blog-card-content">
+                                    <span className="post-title">
+                                        Nine Lesser-Known Elected Offices That Influence Social Systems
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="blog-view-more-container">
+                        <a target="_blank" rel="noopener" className="medium button outline primary" href="https://medium.com/voterly">View All Articles</a>
+                    </div>
+                </div>
+            </div>
+            <div className="swoosh-3">
+                <img src={'/swoosh-tall.svg'} aria-hidden="true" className="flip-y"/>
+            </div>
+            <div className="coming-soon">
+                <img alt="Nepali Flag" src={"/flag.png"} className="flag-image" />
+                <h2 className="headline-large email-section"> Politics, Personalized. </h2>
+                <p className="email-description"> 
+                    Coming Soon – Compare politicians and get personalized voting recommendations based on issues that matter most to you.
+                </p>
+            </div>
             </div>
         </div>
     )

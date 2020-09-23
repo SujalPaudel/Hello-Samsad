@@ -7,6 +7,7 @@ import NewBatch from "./views/OneItem/newBatch";
 import CartItem from "./views/Cart";
 import searchFilter from "./views/searchFilter";
 import mapSearch from "./views/mapSearch";
+import BrowsePolitician from "./views/BrowsePolitician";
 
 const routes = [
     {
@@ -61,6 +62,12 @@ const routes = [
         exact: true,
         name: "mapSearch",
         component: mapSearch,
+    },
+    {
+        path: "/browse-politician",
+        exact: true,
+        name: "browsePolitician",
+        component: BrowsePolitician,
     },
 
 ];
