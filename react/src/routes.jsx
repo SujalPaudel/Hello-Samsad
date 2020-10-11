@@ -8,6 +8,8 @@ import CartItem from "./views/Cart";
 import searchFilter from "./views/searchFilter";
 import mapSearch from "./views/mapSearch";
 import BrowsePolitician from "./views/BrowsePolitician";
+import FindRepresentative from "./views/FindRepresentative";
+import PoliticianPage from "./views/PoliticianPage";
 
 const routes = [
     {
@@ -69,6 +71,18 @@ const routes = [
         name: "browsePolitician",
         component: BrowsePolitician,
     },
+    {
+        path: "/representative",
+        exact: true,
+        name: "myRepresentative",
+        component: FindRepresentative,
+    },
+    {
+        path: "/politician/:id",
+        exact: true,
+        name: "politician",
+        component: PoliticianPage
+    }
 
 ];
 
