@@ -92,7 +92,7 @@ function SearchFilter() {
         <div className={`main-container ${toolBarClass}`}>
             <div className={`header toolbar ${opaque} ${scrollDir} reps-head`}>
                 <div className="logo-container" onClick={()=>history.push('/')}>
-                    <img img src={"/main-logo.jpg"} alt="logo"/>
+                    <img src={"/main-logo.jpg"} alt="logo"/>
                 </div>
                 <nav className="main-nav">
                     {domainData.map((each) => (
@@ -164,7 +164,7 @@ function SearchFilter() {
                         </div>
                     </div>
                         <div className="filter-graphics">
-                            {/* <img aria-hidden="true" src={"/backgrnd-cool.png"}  /> */}
+                            <img aria-hidden="true" src={"/backgrnd-cool.png"}  />
                         </div>
                     
 

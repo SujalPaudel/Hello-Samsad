@@ -1,13 +1,24 @@
 const express = require("express")
 const People = require("./people") // new
+const Location = require("./location")
 const router = express.Router()
 
-router.get("/search", async (req, res) => {
+router.get("/search/people", async (req, res) => {
   const people = await People.find()
   const results = people.filter((word)=>
     new RegExp(`${req.query.q}`,'gi').test(word.name)
     );
   res.json(results);
+})
+
+router.get("/search/location", async (req, res)=> {
+  const location = await Location.find()
+  const results = location.filter((word)=>
+    new RegExp(`${req.query.q}`, 'gi').test(word.name)
+  );
+  const data = results.slice(0, 10);
+  // console.log(typeof(results))
+  res.json(data);
 })
 
 router.post("/people", async (req, res) => {
@@ -47,6 +58,16 @@ router.get("/people/:id", async (req,res)=>{
   }
 })
 
+router.get("/location/:id", async (req,res)=>{
+  try{
+    const location = await Location.findOne({_id:req.params.id})
+    res.send(location)
+  }
+  catch{
+    res.status(404)
+    res.send("Location doesn't exist !")
+  }
+})
 
 
 module.exports = router

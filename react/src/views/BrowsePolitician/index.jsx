@@ -16,6 +16,7 @@ function Home() {
 
     const [opaque, setOpaque] = useState('')
 
+    const [searchOpen, setSearchOpen] = useState(true);
 
     const handleClick = {
         domain: (each) => {
@@ -25,7 +26,7 @@ function Home() {
 
     let handleChange = (e) => {
         if(e.target.value.length>0){
-            axios.get(`/api/search?q=${e.target.value}`)
+            axios.get(`/api/search/people?q=${e.target.value}`)
             .then(res => setlist(res.data))
             .catch(err => console.log(err))
         }else{
@@ -34,7 +35,7 @@ function Home() {
     };
 
     const perPage = (each) => {
-        history.push(`/item/${each._id}`);
+        history.push(`/politician/${each._id}`);
     }
 
     const [sideView, setSideView] = useState('');
@@ -104,7 +105,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="main-content" onClick={()=>setSideView('')}>
+            <div className="main-content" onClick={() => {setSearchOpen(false);setSideView('')}}>
             <div className="hero">
                 <div className = "full-container">
                     <div className = "hero-title">
@@ -114,9 +115,13 @@ function Home() {
                         <div className="context-text"> 
                             Search our extensive database for any politician.
                         </div>
-                        <div className="search-box">
-                            <input type="search" class="main-search" placeholder="Address" autocomplete="off"></input>
+                        <div onClick={(e)=>e.stopPropagation()} className="search-box">
+                            <input type="search" class="main-search" placeholder="Name" autocomplete="off" onChange={handleChange} onClick={()=>setSearchOpen(true)}/>
+                            <div className='search-rec-bg'>
+                            {searchOpen?lists.map((each)=><li onClick={()=> perPage(each)}>{each.name}{each.age}</li>):""}
+                            </div>
                         </div>
+                        
                         <div className="search-box-button">
                             <button color="primary" class="search-button button primary" ><span >Search</span></button>
                         </div>
@@ -142,7 +147,7 @@ function Home() {
                     </div>
                     <div className="image-container">
                         <div className="image">
-                            <img src={"https://files.voterly.com/psn/ef59f8ad9b86e0bff05354d38291b7ab/200x250/donald-trump.jpeg"} alt="Avatar" className="real-image" />
+                            <img src={"/kam_thapa.jpg"} alt="Avatar" className="real-image" />
                         </div>
                         
                     </div>
@@ -164,7 +169,7 @@ function Home() {
                     </div>
                     <div className="image-container">
                         <div className="image">
-                            <img src={"https://files.voterly.com/psn/ef59f8ad9b86e0bff05354d38291b7ab/200x250/donald-trump.jpeg"} alt="Avatar" className="real-image" />
+                            <img src={"/oli.jpg"} alt="Avatar" className="real-image" />
                         </div>
                         
                     </div>
@@ -184,7 +189,7 @@ function Home() {
                     </div>
                     <div className="image-container">
                         <div className="image">
-                            <img src={"https://files.voterly.com/psn/ef59f8ad9b86e0bff05354d38291b7ab/200x250/donald-trump.jpeg"} alt="Avatar" className="real-image" />
+                            <img src={"prachanda.jpg"} alt="Avatar" className="real-image" />
                         </div>
                         
                     </div>

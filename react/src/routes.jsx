@@ -10,6 +10,7 @@ import mapSearch from "./views/mapSearch";
 import BrowsePolitician from "./views/BrowsePolitician";
 import FindRepresentative from "./views/FindRepresentative";
 import PoliticianPage from "./views/PoliticianPage";
+import LocationPage from "./views/locationPage";
 
 const routes = [
     {
@@ -71,17 +72,23 @@ const routes = [
         name: "browsePolitician",
         component: BrowsePolitician,
     },
-    {
-        path: "/representative",
-        exact: true,
-        name: "myRepresentative",
-        component: FindRepresentative,
-    },
+    // {
+    //     path: "/representative",
+    //     exact: true,
+    //     name: "myRepresentative",
+    //     component: FindRepresentative,
+    // },
     {
         path: "/politician/:id",
         exact: true,
         name: "politician",
         component: PoliticianPage
+    },
+    {
+        path: "/location/:id",
+        exact: true,
+        name: "Location",
+        component: LocationPage
     }
 
 ];

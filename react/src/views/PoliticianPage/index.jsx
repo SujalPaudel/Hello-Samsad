@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { onePoliticianData } from "../../actions/listPoliticianAction";
+import { useParams } from "react-router-dom";
 import axios from 'axios'
 import '../../../src/index.css'
 
+
 function PoliticianPage() {
+    const { id } = useParams();
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(onePoliticianData("POPULATE_POLITICIAN", id))
+    }, [])
+
     const history = useHistory();
-    const { domainData, itemsData } = useSelector((state) => state);
+    const { domainData } = useSelector((state) => state);
+
+    const { onePoliticianDataR } = useSelector((state) => state);
+
     const [lists, setlist] = useState([]);
 
     const [toolBarClass, setToolBarClass] = useState('')
@@ -77,9 +90,11 @@ function PoliticianPage() {
         });
     })
 
-    const [first, setFirst] = useState(0);
-
     const [margin, setMargin] = useState(0)
+
+    const [marginExp, setMarginExp] = useState(0)
+
+    const [marginNews, setMarginNews] = useState(0)
 
     return (
         <div className={`main-container ${toolBarClass}`}>
@@ -104,10 +119,10 @@ function PoliticianPage() {
                 </div>
             </div>
             <div className="main-content" onClick={() => setSideView('')}>
-                <div className="hero hero-colored" style={{ backgroundColor: "red" }}>
+                <div className="hero hero-colored" style={{ backgroundColor: "#c21a08" }}>
                     <div className="container">
                         <div class="image-container">
-                            <div class="image"><img src="https://files.voterly.com/psn/ef59f8ad9b86e0bff05354d38291b7ab/200x250/donald-trump.jpeg" alt="Avatar" class="real-image" /></div>
+                            <div class="image"><img src={'/yadav.jpeg'} alt="Avatar" class="real-image" /></div>
                         </div>
                     </div>
                 </div>
@@ -117,15 +132,15 @@ function PoliticianPage() {
                 <div className="container">
                     <div className="poli-header">
                         <h1 className="profile-headline">
-                            Barack Obama
+                            {onePoliticianDataR.name}
                         </h1>
                     </div>
                     <div className="extra-info">
                         <h2 className="profile-sub-headline">
-                            44th president of the United States
+                            {onePoliticianDataR.designation}
                         </h2>
                         <span className="profile-small">
-                            Chicago, Illinois
+                            {onePoliticianDataR.address}, Nepal
                         </span>
                     </div>
 
@@ -133,6 +148,126 @@ function PoliticianPage() {
                         <img src={'/party-image.png'} />
                     </div>
                 </div>
+                <div className="container">
+                    <div className="three-flex">
+                        <div className="stat-card">
+                            <span className="value">
+                                {onePoliticianDataR.age}
+                            </span>
+                            <span className="sub-text">Years</span>
+                        </div>
+                        <div className="stat-card">
+                            <span className="value">
+                                {onePoliticianDataR.residence}
+                            </span>
+                            <span className="sub-text">Residence State</span>
+                        </div>
+                    </div>
+
+                    <div className="poli-summary">
+                        <p>
+                            {onePoliticianDataR.description}
+                        </p>
+                    </div>
+                </div>
+
+                <div className="container education-container">
+                    <div className="header-scroll-bar">
+                        <div className="small-title">
+                            <h3>Education</h3>
+                        </div>
+                        <div className="pointers">
+                            <button onClick={() => margin > -1000 ? setMargin(margin - 272) : ""}>right</button>
+                            <button onClick={() => margin < 0 ? setMargin(margin + 272) : ""}>left</button>
+                        </div>
+                    </div>
+                    <div className="featured-politician-card-container" style={{ marginLeft: margin + "px" }}>
+                        {onePoliticianDataR.education ? onePoliticianDataR.education.map((eleme) =>
+                            <div className="slider-item-container portfolio-card">
+                                <div class="text-container">
+                                    <h4><b>{eleme.degree}</b></h4>
+                                    <span>{eleme.institution}</span>
+                                </div>
+                            </div>
+                        ):""}
+                    </div>
+                </div>
+
+                <div className="container experience-container">
+                    <div className="header-scroll-bar">
+                        <div className="small-title">
+                            <h3>Political History</h3>
+                        </div>
+                        <div className="pointers">
+                            <button onClick={() => marginExp > -1000 ? setMarginExp(marginExp - 272) : ""}>right</button>
+                            <button onClick={() => marginExp < 0 ? setMarginExp(marginExp + 272) : ""}>left</button>
+                        </div>
+                    </div>
+                    <div className="featured-politician-card-container" style={{ marginLeft: marginExp + "px" }}>
+                        {onePoliticianDataR.politicalHistory ? onePoliticianDataR.politicalHistory.map((eleme) =>
+                            <div className="slider-item-container portfolio-card">
+                                <div class="text-container">
+                                    <div>
+                                        <h4><b>{eleme.party}</b></h4>
+                                        <p>{eleme.date}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : ""}
+                    </div>
+                </div>
+
+                <div className="container experience-container">
+                    <div className="header-scroll-bar">
+                        <div className="small-title">
+                            <h3>Major News</h3>
+                        </div>
+                        <div className="pointers">
+                            <button onClick={() => marginNews > -1000 ? setMarginNews(marginNews - 272) : ""}>right</button>
+                            <button onClick={() => marginNews < 0 ? setMarginNews(marginNews + 272) : ""}>left</button>
+                        </div>
+                    </div>
+                    <div className="featured-politician-card-container" style={{ marginLeft: marginNews + "px" }}>
+                        {onePoliticianDataR.majorNews ? onePoliticianDataR.majorNews.map((eleme)=>
+                        <a href={`${eleme.link}`} className="news-link" target="_blank">
+                            <div className="slider-item-container portfolio-card">
+                                <div class="text-container">
+                                    <h4><b>{eleme.title.substring(0, 38)}...</b></h4>
+                                    <p>Src: {eleme.source}</p>
+                                </div>
+                            </div>
+                        </a>) : ""}
+                    </div>
+                </div>
+                <div className="swoosh-3">
+                    <img src={'/swoosh-tall.svg'} aria-hidden="true" className="flip-y" />
+                </div>
+                <div className="coming-soon">
+                    <img alt="Nepali Flag" src={"/flag.png"} className="flag-image" />
+                    <h2 className="headline-large email-section"> Politics, Personalized. </h2>
+                    <p className="email-description">
+                        Coming Soon – Compare politicians and get personalized voting recommendations based on issues that matter most to you.
+                        </p>
+                </div>
+
+            </div>
+            <div className="footer even-row">
+                <a onClick={() => history.push('/')}>
+                    Home
+                </a>
+                <a onClick={() => history.push('/')}>
+                    Reps
+                </a>
+                <a onClick={() => history.push('/')}>
+                    Browse
+                </a>
+                <a onClick={() => history.push('/')}>
+                    Home
+                </a>
+            </div>
+
+            <div className="footer-all">
+
             </div>
 
         </div>
