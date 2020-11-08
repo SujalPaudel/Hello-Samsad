@@ -3,11 +3,12 @@ const mongoose = require("mongoose")
 const schema = mongoose.Schema({
   name: String,
   age: Number,
+  ageRange: String,
   gender:String,
   designation: String,
   address: String,
   party: Number,
-  residence: String,
+  state: String,
   description: String,
   education: Array,
   politicalHistory: Array,
