@@ -20,7 +20,7 @@ function SearchFilter() {
             baseRoute += `name=${searchItem}`
         }
         if (ageRange != 'null') {
-            baseRoute += `&age=${ageRange}`
+            baseRoute += `&ageRange=${ageRange}`
         }
         if (gender != 'null') {
             baseRoute += `&gender=${gender}`
@@ -160,8 +160,9 @@ function SearchFilter() {
                                 </select>
                             </div>
                             <button onClick={() => searchQuery()} color="primary" class="filter-button" ><span >Go</span></button>
-                            {result.map((one) => <li>{one.name} - {one.age} -{one.gender}</li>)}
+                            
                         </div>
+                        {result.map((one) => <li>{one.name} - {one.age} -{one.gender}</li>)}
                     </div>
                         <div className="filter-graphics">
                             <img aria-hidden="true" src={"/backgrnd-cool.png"}  />

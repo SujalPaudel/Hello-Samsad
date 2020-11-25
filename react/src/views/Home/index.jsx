@@ -127,9 +127,9 @@ function Home() {
                                 </div>
                             </div>
 
-                            <div className="search-box-button">
+                            {/* <div className="search-box-button">
                                 <button color="primary" class="search-button button primary" ><span >Search</span></button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -236,9 +236,9 @@ function Home() {
                             </span>
                         </div>
                         <div className="container experience-container">
-
-                            <button onClick={() => margin > -1000 ? setMargin(margin - 272) : ""}>right</button>
-                            <button onClick={() => margin < 0 ? setMargin(margin + 272) : ""}>left</button>
+                            
+                            <img src = {'/right.png'} style={{width: "20px", transform: "scaleX(-1)"}} onClick={() => margin < 0 ? setMargin(margin + 272) : ""}/>
+                            <img src = {'/right.png'} style={{width: "20px"}} onClick={() => margin > -1000 ? setMargin(margin - 272) : ""}/>
                             <div className="featured-politician-card-container" style={{ marginLeft: margin + "px" }}>
                                 <div className="slider-item-container">
                                     <div className="cover-image">

@@ -778,7 +778,16 @@ img.image-blob{
 
 .browse {
     max-width: 1107px;
-    margin: 60px auto;
+    margin: 0px auto;
+}
+
+.delegates {
+    color: #4d4d4d;
+}
+@media all and (max-width: 800px){
+    .delegates{
+        margin-top: 20px;
+    }
 }
 
 .filter-graphics{
