@@ -1,4 +1,5 @@
 import React from "react";
+import "./components/FontawesomeIcons"
 import { Route } from "react-router-dom";
 
 import useInitialize from "./components/utils/initialize";

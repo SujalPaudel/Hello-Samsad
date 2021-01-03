@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from 'axios'
-import '../../../src/index.css'
+import axios from 'axios';
+import '../../../src/index.css';
+import Footer from '../../components/utils/Footer';
 
 function Home() {
     const history = useHistory();
@@ -149,9 +150,9 @@ function Home() {
                             </div>
                             <div className="image-container">
                                 <img aria-hidden="true" id="swatch" src={"/swatch-yellow.png"} />
-                                {/* <img aria-hidden="true" id="eagle" src={"/dal-bhat.jpg"} />
-                                <img aria-hidden="true" id="pie" src={"/pie.png"} />
-                                <img aria-hidden="true" id="button" src={"/button.png"} /> */}
+                                <img aria-hidden="true" id="flower" src={"/flower.png"} />
+                               <img aria-hidden="true" id="dal-bhat" src={"/dal-bhat.png"} />
+                                <img aria-hidden="true" id="topi" src={"/topi.png"} /> 
                             </div>
                         </div>
                     </div>
@@ -165,55 +166,38 @@ function Home() {
                         </div>
                         <div className="home-page-features">
                             <div className="home-page-feature">
-                                {/* <div className="image-container">
-                                    <img src={"/flag-hand.png"} alt="Dhaka Topi" className="" />
-                                </div> */}
+                                <div className="image-container">
+                                    <img src={"/representative.png"} alt="Dhaka Topi" className="" />
+                                </div>
                                 <h2 className="headline">
-                                    Registration Monitor
+                                    Your Representatives
+
                             </h2>
                                 <p>
-                                    Check if you're currently registered to vote and get notified if anything changes.
-                            </p>
-                                <span className="feature-spacer"></span>
-                                <div className="btn-container">
-                                    <a className="medium primary button">
-                                        Sign Up
-                                </a>
-                                </div>
+                                    Find the information about your local and country representatives with ease.
+                                </p>
                             </div>
                             <div className="home-page-feature">
-                                {/* <div className="image-container">
-                                    <img src={"/flag-hand.png"} alt="Dhaka Topi" className="" />
-                                </div> */}
+                                <div className="image-container">
+                                    <img src={"/beaureacrats.png"} alt="Dhaka Topi" className="" />
+                                </div>
                                 <h2 className="headline">
-                                    Registration Monitor
+                                    Top Beaureacrats
                             </h2>
                                 <p>
-                                    Check if you're currently registered to vote and get notified if anything changes.
+                                    Find information about beaureacrats who make important decisions for your country.
                             </p>
-                                <span className="feature-spacer"></span>
-                                <div className="btn-container">
-                                    <a className="medium primary button">
-                                        Sign Up
-                                </a>
-                                </div>
                             </div>
                             <div className="home-page-feature">
-                                {/* <div className="image-container">
-                                    <img src={"/flag-hand.png"} alt="Dhaka Topi" className="" />
-                                </div> */}
+                                <div className="image-container">
+                                    <img src={"/search.png"} alt="Dhaka Topi" className="" />
+                                </div>
                                 <h2 className="headline">
-                                    Registration Monitor
+                                    Filtered Searches
                             </h2>
                                 <p>
-                                    Check if you're currently registered to vote and get notified if anything changes.
+                                    Use filtered search techniques to get niche information about the representatives of country.
                             </p>
-                                <span className="feature-spacer"></span>
-                                <div className="btn-container">
-                                    <a className="medium primary button">
-                                        Sign Up
-                                </a>
-                                </div>
                             </div>
                         </div>
 
@@ -236,9 +220,8 @@ function Home() {
                             </span>
                         </div>
                         <div className="container experience-container">
-                            
-                            <img src = {'/right.png'} style={{width: "20px", transform: "scaleX(-1)"}} onClick={() => margin < 0 ? setMargin(margin + 272) : ""}/>
-                            <img src = {'/right.png'} style={{width: "20px"}} onClick={() => margin > -1000 ? setMargin(margin - 272) : ""}/>
+                            <img src = {'/right.png'} style={{width: "20px", transform: "scaleX(-1)"}} onClick={() => margin < 0 ? setMargin(margin + 272) : ""} className="arrowHand"/>
+                            <img src = {'/right.png'} style={{width: "20px"}} onClick={() => margin > -1000 ? setMargin(margin - 272) : ""} className="arrowHand"/>
                             <div className="featured-politician-card-container" style={{ marginLeft: margin + "px" }}>
                                 <div className="slider-item-container">
                                     <div className="cover-image">
@@ -407,25 +390,7 @@ function Home() {
                     </p>
                 </div>
             </div>
-
-            <div className="footer even-row">
-                <a onClick={() => history.push('/')}>
-                    Home
-                </a>
-                <a onClick={() => history.push('/')}>
-                    Reps
-                </a>
-                <a onClick={() => history.push('/')}>
-                    Browse
-                </a>
-                <a onClick={() => history.push('/')}>
-                    Home
-                </a>
-            </div>
-
-            <div className="footer-all">
-
-            </div>
+            {Footer()}
         </div>
     )
 }

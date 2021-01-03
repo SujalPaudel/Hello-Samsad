@@ -266,21 +266,21 @@ img.abs{
     max-width: 100%;
 }
 
-.mission-section .image-container #eagle{
-    width: 69%;
+.mission-section .image-container #flower{
+    width: 49%;
     position: absolute;
     top: -15%;
-    left: 6%;
+    left: 20%;
 }
 
-.mission-section .image-container #pie {
+.mission-section .image-container #dal-bhat {
     width: 59%;
     position: absolute;
     left: -3.8%;
     top: 44%;
 }
 
-.mission-section .image-container #button{
+.mission-section .image-container #topi{
     width: 40%;
     position: absolute;
     top: 28%;
@@ -407,6 +407,9 @@ h2.headline {
     padding: 80px 0;
 }
 
+.arrowHand {
+    cursor: pointer;
+}
 
 .test-image img{
     background: #e6f0ec;
@@ -701,6 +704,7 @@ img.flip-y {
 /* coming soon section */
 .coming-soon{
     background-color: #fbe1cf;
+    padding-bottom: 100px;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -814,6 +818,31 @@ img.image-blob{
     padding: 40px;
     height: 200px;
     font-weight: 400;
+    display: flex;
+    max-width: calc(100% + 16px);
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.footer-logo{
+    width: 80%;
+}
+
+.footer-center-links > a{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+@media all and (max-width: 800px){
+    .footer-all{
+        display: none;
+    }
+}
+
+.social-links{
+    cursor: pointer;
 }
 
 /* search-with-filters */
@@ -934,6 +963,8 @@ img.image-blob{
         padding: 0 15px;
     }
 }
+
+
 
 @media all and (max-width: 800px){
     .main-nav{

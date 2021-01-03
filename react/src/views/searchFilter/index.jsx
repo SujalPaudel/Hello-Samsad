@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from 'axios'
-import '../../../src/index.css'
+import axios from 'axios';
+import '../../../src/index.css';
+import Footer from '../../components/utils/Footer';
 
 function SearchFilter() {
     const history = useHistory();
@@ -171,21 +172,7 @@ function SearchFilter() {
 
                 </div>
             </div>
-            <div className="footer even-row">
-                <a onClick={()=>history.push('/')}>
-                    Home
-                </a>
-                <a onClick={()=>history.push('/')}>
-                    Reps
-                </a>
-                <a onClick={()=>history.push('/')}>
-                    Browse
-                </a>
-                <a onClick={()=>history.push('/')}>
-                    Home
-                </a>
-            </div>
-
+            {Footer()}
         </div>
     )
 }
