@@ -65,6 +65,7 @@ div.toolbar{
 }
 
 div.toolbar-location {
+    border-bottom: 2px solid #ececec;
     color: gray;
 }
 
@@ -542,8 +543,11 @@ img.real-image{
     left: 0;
 }
 
+.delegates-card{
+    background-color: #1881db;
+}
+
 .slider-item-container .cover-image{
-    background-image: linear-gradient(to right bottom, rgb(219, 108, 108), rgb(179, 58, 58));
     padding-top: 50%;
 }
 
@@ -1213,7 +1217,7 @@ div.hero-colored {
 }
 
 .poli-summary {
-    padding-bottom: 60px;
+    padding-bottom: 0;
     font-size: 14px;
     line-height: 22px;
 }
@@ -1279,18 +1283,13 @@ div.hero-colored {
     margin-bottom: 0px;
     padding: 16px 0;
     color: #797979;
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 24px;
 }
-
-
-
-
-
-
-
-
-
+.sub-header > span {
+    color: #000;
+    background-color: rgb(206 227 255);
+}
 
 /* map section */
 .mapdiv{

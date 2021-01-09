@@ -22,7 +22,7 @@ const fetchDomainData = () => {
 		const data = [
 			// { id: 2, name: "Representative", route: "representative" },
 			{ id: 3, name: "Browse Politician", route: "browse-politician" },
-			{ id: 4, name: "Voter Tools", route: "voter-tools" },
+			// { id: 4, name: "Voter Tools", route: "voter-tools" },
 			{ id: 5, name: "Search With Filters", route: "search-filters" },
 			{ id: 6, name: "Map Search", route: "map-search" },
 		];

@@ -1,6 +1,7 @@
 const express = require("express")
 const People = require("./people") // new
 const Location = require("./location")
+const Delegate = require("./delegate")
 const router = express.Router()
 
 router.get("/search/people", async (req, res) => {
@@ -82,6 +83,17 @@ router.get("/location/:id", async (req,res)=>{
   catch{
     res.status(404)
     res.send("Location doesn't exist !")
+  }
+})
+
+router.get("/delegates", async(req, res) => {
+  try {
+    const delegates = await Delegate.find()
+    res.send(delegates)
+  }
+  catch {
+    res.status(404)
+    res.send("Delegates not found")
   }
 })
 

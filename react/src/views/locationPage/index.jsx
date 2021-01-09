@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { oneLocationData } from "../../actions/listLocationAction";
-import axios from 'axios'
-import '../../../src/index.css'
+import axios from 'axios';
+import '../../../src/index.css';
+import Footer from '../../components/utils/Footer';
 
 function OneLocation() {
     const { id } = useParams();
@@ -115,8 +116,11 @@ function OneLocation() {
                 
             </div>
             <div className="main-content">
+                <div className="repre-test">
                     <div className="full-container">
-                            <h1 className="sub-header">Your Representatives</h1>
+                            <h1 className="sub-header">
+                                <span className="highlighted-header">Your Representatives</span></h1>
+                    </div>
                 </div>
                 <div className="container experience-container">
                             <div className="featured-politician-card-container-one-rep" onClick={()=>one?history.push(`/politician/${one.repId}`):""}>
@@ -141,6 +145,7 @@ function OneLocation() {
                                 </div>
                                 </div>
                         </div>
+                        {Footer()}
             </div>
         </div>
     );

@@ -80,7 +80,14 @@ function Home() {
 
     const [first, setFirst] = useState(0);
 
-    const [margin, setMargin] = useState(0)
+    const [margin, setMargin] = useState(0);
+
+    const landing_array = [{ id: "5f566064c618f4d4faf8aa70", name: "KP Sharma Oli", position: "Prime Minister Of Nepal", img: "https://i.postimg.cc/MTxBSrnh/oli.jpg", color: "rgb(219, 108, 108), rgb(179, 58, 58)" },
+    { id: "5f56627064b765daf26dc0b6", name: "Pushpa Kamal Dahal", position: "Chairman, Nepal Communist Party", img: "https://i.postimg.cc/RCJWYBpN/prachanda.jpg", color: "rgb(219, 108, 108), rgb(179, 58, 58)" },
+    { id: "5f579dc91f21ba9af0502f68", name: "Sher Bahadur Deuba", position: "President of Nepali Congress Party", img: "https://i.postimg.cc/bYnvTRdn/sher-bdr.jpg", color: "rgb(136, 159, 133), rgb(59, 102, 57)"},
+    { id: "5f8fabf2d42a6e69601b4a4f", name: "Matrika Prasad Yadav", position: "Ministry Of Industry, Commerce and Supplies", img: "https://i.postimg.cc/mZ7bM26N/yadav.jpg", color: "rgb(219, 108, 108), rgb(179, 58, 58)" },
+    { id: "5ff2994df7622666e57d0a1f", name: "Rabindra Mishra", position: "Co-Ordinator of Sajha Party", img: "https://i.postimg.cc/k40gC2YD/rav-mishra.jpg", color: "rgb(71, 94, 228), rgb(28, 45, 146)" }
+    ]
 
     return (
         <div className="main-container">
@@ -112,8 +119,8 @@ function Home() {
                         </div>
                         <div className="total-search-segment">
                             <div className="search-options">
-                                <a className="search-option">My Representatives</a>
-                                <a className="search-option">Search with Maps</a>
+                                <a className="search-option" onClick={() => history.push(`/search-filters`)}>Use Filters</a>
+                                <a className="search-option" onClick={() => history.push(`/map-search`)}>Search with Maps</a>
                             </div>
                             <div className="context-text">
                                 Enter your address to find the politicians who represent you.
@@ -124,7 +131,7 @@ function Home() {
                                 <div className='search-rec-bg'>
                                     {searchOpen ? lists.map((each) => <li onClick={() => perPage(each)}>{each.name}, <div className="faint-recommend">
                                         {each.district[0].toUpperCase() + each.district.slice(1)}, Province {each.state}
-                                    </div></li>): ""}
+                                    </div></li>) : ""}
                                 </div>
                             </div>
 
@@ -151,8 +158,8 @@ function Home() {
                             <div className="image-container">
                                 <img aria-hidden="true" id="swatch" src={"/swatch-yellow.png"} />
                                 <img aria-hidden="true" id="flower" src={"/flower.png"} />
-                               <img aria-hidden="true" id="dal-bhat" src={"/dal-bhat.png"} />
-                                <img aria-hidden="true" id="topi" src={"/topi.png"} /> 
+                                <img aria-hidden="true" id="dal-bhat" src={"/dal-bhat.png"} />
+                                <img aria-hidden="true" id="topi" src={"/topi.png"} />
                             </div>
                         </div>
                     </div>
@@ -171,8 +178,7 @@ function Home() {
                                 </div>
                                 <h2 className="headline">
                                     Your Representatives
-
-                            </h2>
+                                </h2>
                                 <p>
                                     Find the information about your local and country representatives with ease.
                                 </p>
@@ -220,107 +226,33 @@ function Home() {
                             </span>
                         </div>
                         <div className="container experience-container">
-                            <img src = {'/right.png'} style={{width: "20px", transform: "scaleX(-1)"}} onClick={() => margin < 0 ? setMargin(margin + 272) : ""} className="arrowHand"/>
-                            <img src = {'/right.png'} style={{width: "20px"}} onClick={() => margin > -1000 ? setMargin(margin - 272) : ""} className="arrowHand"/>
+                            <img src={'/right.png'} style={{ width: "20px", transform: "scaleX(-1)" }} onClick={() => margin < 0 ? setMargin(margin + 272) : ""} className="arrowHand" />
+                            <img src={'/right.png'} style={{ width: "20px" }} onClick={() => margin > -1000 ? setMargin(margin - 272) : ""} className="arrowHand" />
                             <div className="featured-politician-card-container" style={{ marginLeft: margin + "px" }}>
-                                <div className="slider-item-container">
-                                    <div className="cover-image">
-                                        <div className="swoosh">
-                                            <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                                <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                            </svg>
+                                {landing_array.map((each) => (
+                                    <div className="slider-item-container" onClick={() => history.push(`politician/${each.id}`)}>
+                                        <div className="cover-image" style={{
+						                    backgroundImage: `linear-gradient(to right bottom, ${each.color})`}}>
+                                            <div className="swoosh">
+                                                <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
+                                                    <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
+                                                </svg>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="image-container">
-                                        <div className="image">
-                                            <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTTBn6bCmY4hkvOB5E0g1F04iQ0GGllHB966A&usqp=CAU'} alt="Avatar" className="real-image" />
-                                        </div>
+                                        <div className="image-container">
+                                            <div className="image">
+                                                <img src={each.img} alt="Avatar" className="real-image" />
+                                            </div>
 
-                                    </div>
-                                    <div class="text-container">
-                                        <h4><b>KP Sharma Oli</b></h4>
-                                        <p>Prime Minister Of Nepal</p>
-                                        {/* <div className="party-container">
+                                        </div>
+                                        <div class="text-container">
+                                            <h4><b>{each.name}</b></h4>
+                                            <p>{each.position}</p>
+                                            {/* <div className="party-container">
                                             <span>REPUBLICAN</span>
                                         </div> */}
-                                    </div>
-                                </div>
-                                <div className="slider-item-container">
-                                    <div className="cover-image">
-                                        <div className="swoosh">
-                                            <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                                <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                            </svg>
                                         </div>
-                                    </div>
-                                    <div className="image-container">
-                                        <div className="image">
-                                            <img src={"/prachanda.jpg"} alt="Avatar" className="real-image" />
-                                        </div>
-
-                                    </div>
-                                    <div class="text-container">
-                                        <h4><b>Pushpa Kamal Dahal</b></h4>
-                                        <p>Chair</p>
-                                    </div>
-                                </div>
-                                <div className="slider-item-container">
-                                    <div className="cover-image">
-                                        <div className="swoosh">
-                                            <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                                <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="image-container">
-                                        <div className="image">
-                                            <img src={"/sher_bdr.jpg"} alt="Avatar" className="real-image" />
-                                        </div>
-
-                                    </div>
-                                    <div class="text-container">
-                                        <h4><b>Sher Bdr Deuba</b></h4>
-                                        <p>Leader Of Opposition</p>
-                                    </div>
-                                </div>
-                                <div className="slider-item-container" onClick={() => history.push('/politician/1')}>
-                                    <div className="cover-image">
-                                        <div className="swoosh">
-                                            <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                                <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="image-container">
-                                        <div className="image">
-                                            <img src={"/yadav.jpeg"} alt="Avatar" className="real-image" />
-                                        </div>
-
-                                    </div>
-                                    <div class="text-container">
-                                        <h4><b>Matrika Pd Yadav</b></h4>
-                                        <p>Ministry Of Industry</p>
-                                    </div>
-                                </div>
-                                <div className="slider-item-container">
-                                    <div className="cover-image">
-                                        <div className="swoosh">
-                                            <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                                <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="image-container">
-                                        <div className="image">
-                                            <img src={"/kam_thapa.jpg"} alt="Avatar" className="real-image" />
-                                        </div>
-
-                                    </div>
-                                    <div class="text-container">
-                                        <h4><b>Kamal Thapa</b></h4>
-                                        <p>Rastriya Prajatantra Party</p>
-                                    </div>
-                                </div>
+                                    </div>))}
                             </div>
                         </div>
 
@@ -383,7 +315,7 @@ function Home() {
                     <img src={'/swoosh-tall.svg'} aria-hidden="true" className="flip-y" />
                 </div>
                 <div className="coming-soon">
-                    <img alt="Nepali Flag" src={"/flag.png"} className="flag-image" />
+                    <img alt="Nepali Flag" src={"/nepali-flag.png"} className="flag-image" />
                     <h2 className="headline-large email-section"> Politics, Personalized. </h2>
                     <p className="email-description">
                         Coming Soon – Compare politicians and get personalized voting recommendations based on issues that matter most to you.

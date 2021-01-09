@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from 'axios';
 import '../../../src/index.css';
+import AllDelegates from  '../../actions/listDelegateAction';
 import Footer from '../../components/utils/Footer';
 
 function Home() {
@@ -44,6 +45,8 @@ function Home() {
 
     const [scrollDir, setScrollDir] = useState("scroll-up");
 
+    const [allDelegates, setAllDelegates] = useState([])
+
     useEffect(() => {
         const threshold = 0;
         let lastScrollY = window.pageYOffset;
@@ -84,6 +87,14 @@ function Home() {
         });
     })
 
+    useEffect(() => {
+        axios.get("/api/delegates")
+        .then(res => setAllDelegates(res.data))
+        .catch(err => console.log(err))
+    })
+
+    const one = [{name: "sujal", age: "two"}, {name: "rajiv", age: "two"}]
+    console.log(allDelegates)
 
     return (
         <div className={`main-container ${toolBarClass}`}>
@@ -120,7 +131,7 @@ function Home() {
                             <div onClick={(e) => e.stopPropagation()} className="search-box">
                                 <input type="search" class="main-search" placeholder="Name" autocomplete="off" onChange={handleChange} onClick={() => setSearchOpen(true)} />
                                 <div className='search-rec-bg'>
-                                    {searchOpen ? lists.map((each) => <li onClick={() => perPage(each)}>{each.name}{each.age}</li>) : ""}
+                                    {searchOpen ? lists.map((each) => <li onClick={() => perPage(each)}>{each.name}, {each.age}</li>) : ""}
                                 </div>
                             </div>
 
@@ -143,109 +154,26 @@ function Home() {
                     <img src={'/right.png'} style={{ width: "20px" }} onClick={() => margin > -1000 ? setMargin(margin - 272) : ""} className="arrowHand" />
                     <div className="featured-politician-card-container" style={{ marginLeft: margin + "px" }}>
                         <div className="featured-politician-card-container browse">
-
-                            <div className="slider-item-container">
-                                <div className="cover-image">
-                                    <div className="swoosh">
-                                        <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                            <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                        </svg>
+                                {allDelegates.map((each) => 
+                                    <div className="slider-item-container">
+                                        <div className="cover-image delegates-card">
+                                            <div className="swoosh">
+                                                <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
+                                                    <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div className="image-container">
+                                            <div className="image">
+                                                <img src={each.img} alt="Avatar" className="real-image" />
+                                            </div>
+                                        </div>
+                                        <div class="text-container">
+                                            <h4><b>{each.name}</b></h4>
+                                            <p>{each.designation}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="image-container">
-                                    <div className="image">
-                                        <img src={"/kam_thapa.jpg"} alt="Avatar" className="real-image" />
-                                    </div>
-
-                                </div>
-                                <div class="text-container">
-                                    <h4><b>John Doe</b></h4>
-                                    <p>Architect and Engineer</p>
-                                    <div className="party-container">
-                                        <span>REPUBLICAN</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="slider-item-container">
-                                <div className="cover-image">
-                                    <div className="swoosh">
-                                        <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                            <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="image-container">
-                                    <div className="image">
-                                        <img src={"/oli.jpg"} alt="Avatar" className="real-image" />
-                                    </div>
-
-                                </div>
-                                <div class="text-container">
-                                    <h4><b>John Doe</b></h4>
-                                    <p>Architect and Engineer</p>
-                                </div>
-                            </div>
-
-                            <div className="slider-item-container">
-                                <div className="cover-image">
-                                    <div className="swoosh">
-                                        <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                            <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="image-container">
-                                    <div className="image">
-                                        <img src={"prachanda.jpg"} alt="Avatar" className="real-image" />
-                                    </div>
-
-                                </div>
-                                <div class="text-container">
-                                    <h4><b>John Doe</b></h4>
-                                    <p>Architect and Engineer</p>
-                                </div>
-                            </div>
-
-                            <div className="slider-item-container">
-                                <div className="cover-image">
-                                    <div className="swoosh">
-                                        <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                            <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="image-container">
-                                    <div className="image">
-                                        <img src={"prachanda.jpg"} alt="Avatar" className="real-image" />
-                                    </div>
-
-                                </div>
-                                <div class="text-container">
-                                    <h4><b>John Doe</b></h4>
-                                    <p>Architect and Engineer</p>
-                                </div>
-                            </div>
-
-                            <div className="slider-item-container">
-                                <div className="cover-image">
-                                    <div className="swoosh">
-                                        <svg version="1.1" viewBox="0 0 1039 186" xmlns="http://www.w3.org/2000/svg">
-                                            <path className="card-swoosh" d="m1039 132.38v48.62c0 2.7615-2.2386 5-5 5h-1029c-2.7614 0-5-2.2385-5-5v-177.48c157.43-8.7984 332.77 10.371 526 57.509 205.44 50.116 373.52 71.45 513 71.347z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="image-container">
-                                    <div className="image">
-                                        <img src={"prachanda.jpg"} alt="Avatar" className="real-image" />
-                                    </div>
-
-                                </div>
-                                <div class="text-container">
-                                    <h4><b>John Doe</b></h4>
-                                    <p>Architect and Engineer</p>
-                                </div>
-                            </div>
-
+                                )}
                         </div>
                     </div></div></div>
 

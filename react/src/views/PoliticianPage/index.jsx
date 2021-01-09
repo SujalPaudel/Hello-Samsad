@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { onePoliticianData } from "../../actions/listPoliticianAction";
 import { useParams } from "react-router-dom";
-import axios from 'axios'
-import '../../../src/index.css'
-
+import axios from 'axios';
+import '../../../src/index.css';
+import Footer from '../../components/utils/Footer';
 
 function PoliticianPage() {
     const { id } = useParams();
@@ -119,10 +119,10 @@ function PoliticianPage() {
                 </div>
             </div>
             <div className="main-content" onClick={() => setSideView('')}>
-                <div className="hero hero-colored" style={{ backgroundColor: "#c21a08" }}>
+                <div className="hero hero-colored" style={{ backgroundColor: `${onePoliticianDataR.color_code}` }}>
                     <div className="container">
                         <div class="image-container">
-                            <div class="image"><img src={'/yadav.jpeg'} alt="Avatar" class="real-image" /></div>
+                            <div class="image"><img src={onePoliticianDataR.img} alt="Avatar" class="real-image" /></div>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ function PoliticianPage() {
                     </div>
 
                     <div className="party-info">
-                        <img src={'/party-image.png'} />
+                        <img src={onePoliticianDataR.party_img} />
                     </div>
                 </div>
                 <div className="container">
@@ -177,8 +177,8 @@ function PoliticianPage() {
                             <h3>Education</h3>
                         </div>
                         <div className="pointers">
-                            <button onClick={() => margin > -1000 ? setMargin(margin - 272) : ""}>right</button>
-                            <button onClick={() => margin < 0 ? setMargin(margin + 272) : ""}>left</button>
+                            <img src={'/right.png'} style={{ width: "20px", transform: "scaleX(-1)" }} onClick={() => margin > -(((onePoliticianDataR.education).length) * 272) ? setMargin(margin - 272) : ""} className="arrowHand" />
+                            <img src={'/right.png'} style={{ width: "20px" }} onClick={() => margin < 0 ? setMargin(margin + 272) : ""} className="arrowHand" />
                         </div>
                     </div>
                     <div className="featured-politician-card-container" style={{ marginLeft: margin + "px" }}>
@@ -199,8 +199,8 @@ function PoliticianPage() {
                             <h3>Political History</h3>
                         </div>
                         <div className="pointers">
-                            <button onClick={() => marginExp > -1000 ? setMarginExp(marginExp - 272) : ""}>right</button>
-                            <button onClick={() => marginExp < 0 ? setMarginExp(marginExp + 272) : ""}>left</button>
+                            <img src={'/right.png'} style={{ width: "20px", transform: "scaleX(-1)" }} onClick={() => marginExp > -(((onePoliticianDataR.politicalHistory).length) * 272) ? setMarginExp(marginExp - 272) : ""} className="arrowHand" />
+                            <img src={'/right.png'} style={{ width: "20px" }} onClick={() => marginExp < 0 ? setMarginExp(marginExp + 272) : ""} className="arrowHand" />
                         </div>
                     </div>
                     <div className="featured-politician-card-container" style={{ marginLeft: marginExp + "px" }}>
@@ -223,8 +223,8 @@ function PoliticianPage() {
                             <h3>Major News</h3>
                         </div>
                         <div className="pointers">
-                            <button onClick={() => marginNews > -1000 ? setMarginNews(marginNews - 272) : ""}>right</button>
-                            <button onClick={() => marginNews < 0 ? setMarginNews(marginNews + 272) : ""}>left</button>
+                            <img src={'/right.png'} style={{ width: "20px", transform: "scaleX(-1)" }} onClick={() => marginNews > -(((onePoliticianDataR.majorNews).length) * 272) ? setMarginNews(marginNews - 272) : ""} className="arrowHand" />
+                            <img src={'/right.png'} style={{ width: "20px" }} onClick={() => marginNews < 0 ? setMarginNews(marginNews + 272) : ""} className="arrowHand" />
                         </div>
                     </div>
                     <div className="featured-politician-card-container" style={{ marginLeft: marginNews + "px" }}>
@@ -243,7 +243,7 @@ function PoliticianPage() {
                     <img src={'/swoosh-tall.svg'} aria-hidden="true" className="flip-y" />
                 </div>
                 <div className="coming-soon">
-                    <img alt="Nepali Flag" src={"/flag.png"} className="flag-image" />
+                    <img alt="Nepali Flag" src={"/nepali-flag.png"} className="flag-image" />
                     <h2 className="headline-large email-section"> Politics, Personalized. </h2>
                     <p className="email-description">
                         Coming Soon – Compare politicians and get personalized voting recommendations based on issues that matter most to you.
@@ -265,11 +265,7 @@ function PoliticianPage() {
                     Home
                 </a>
             </div>
-
-            <div className="footer-all">
-
-            </div>
-
+            {Footer()}
         </div>
     )
 }
