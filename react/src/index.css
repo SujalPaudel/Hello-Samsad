@@ -807,12 +807,17 @@ img.image-blob{
 
 .filter-graphics img {
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 
+.filter-result-div {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
 
-
-
+.filter-result-div > li {
+    cursor: pointer;
+}
 /* footer-component */
 
 .footer-all {

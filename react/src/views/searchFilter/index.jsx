@@ -161,13 +161,12 @@ function SearchFilter() {
                                 </select>
                             </div>
                             <button onClick={() => searchQuery()} color="primary" class="filter-button" ><span >Go</span></button>
-                            
                         </div>
-                        {result.map((one) => <li>{one.name} - {one.age} -{one.gender}</li>)}
+                        <div className="filter-result-div">
+                            {result.map((one) => <li onClick={()=>history.push(`/politician/${one._id}`)}>{one.name}</li>)}
+                        </div>
                     </div>
-                        <div className="filter-graphics">
-                            <img aria-hidden="true" src={"/backgrnd-cool.png"}  />
-                        </div>
+                      
                     
 
                 </div>

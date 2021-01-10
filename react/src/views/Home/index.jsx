@@ -86,7 +86,8 @@ function Home() {
     { id: "5f56627064b765daf26dc0b6", name: "Pushpa Kamal Dahal", position: "Chairman, Nepal Communist Party", img: "https://i.postimg.cc/RCJWYBpN/prachanda.jpg", color: "rgb(219, 108, 108), rgb(179, 58, 58)" },
     { id: "5f579dc91f21ba9af0502f68", name: "Sher Bahadur Deuba", position: "President of Nepali Congress Party", img: "https://i.postimg.cc/bYnvTRdn/sher-bdr.jpg", color: "rgb(136, 159, 133), rgb(59, 102, 57)"},
     { id: "5f8fabf2d42a6e69601b4a4f", name: "Matrika Prasad Yadav", position: "Ministry Of Industry, Commerce and Supplies", img: "https://i.postimg.cc/mZ7bM26N/yadav.jpg", color: "rgb(219, 108, 108), rgb(179, 58, 58)" },
-    { id: "5ff2994df7622666e57d0a1f", name: "Rabindra Mishra", position: "Co-Ordinator of Sajha Party", img: "https://i.postimg.cc/k40gC2YD/rav-mishra.jpg", color: "rgb(71, 94, 228), rgb(28, 45, 146)" }
+    { id: "5ff2994df7622666e57d0a1f", name: "Rabindra Mishra", position: "Co-Ordinator of Sajha Party", img: "https://i.postimg.cc/k40gC2YD/rav-mishra.jpg", color: "rgb(71, 94, 228), rgb(28, 45, 146)" },
+    { id: "5fa6b1fab6b938cdfce32fae", name: "UmaShankar Argariya", position: "Member of Parliament (MP)", img: "https://i.postimg.cc/qM3KJGSy/umashankar.png", color: "rgb(255, 2, 8), rgb(0, 152, 37)" },
     ]
 
     return (
@@ -174,7 +175,7 @@ function Home() {
                         <div className="home-page-features">
                             <div className="home-page-feature">
                                 <div className="image-container">
-                                    <img src={"/representative.png"} alt="Dhaka Topi" className="" />
+                                    <img src={"/representative.png"} alt="Dhaka Topi"/>
                                 </div>
                                 <h2 className="headline">
                                     Your Representatives
@@ -185,7 +186,7 @@ function Home() {
                             </div>
                             <div className="home-page-feature">
                                 <div className="image-container">
-                                    <img src={"/beaureacrats.png"} alt="Dhaka Topi" className="" />
+                                    <img src={"/beaureacrats.png"} alt="Dhaka Topi"/>
                                 </div>
                                 <h2 className="headline">
                                     Top Beaureacrats
@@ -196,7 +197,7 @@ function Home() {
                             </div>
                             <div className="home-page-feature">
                                 <div className="image-container">
-                                    <img src={"/search.png"} alt="Dhaka Topi" className="" />
+                                    <img src={"/search.png"} alt="Dhaka Topi"/>
                                 </div>
                                 <h2 className="headline">
                                     Filtered Searches
@@ -241,7 +242,7 @@ function Home() {
                                         </div>
                                         <div className="image-container">
                                             <div className="image">
-                                                <img src={each.img} alt="Avatar" className="real-image" />
+                                                <img src={each.img} loading="lazy" alt="Avatar" className="real-image" />
                                             </div>
 
                                         </div>
